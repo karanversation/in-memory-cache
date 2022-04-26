@@ -1,5 +1,6 @@
 # Author: Karan Bajaj (karanbajaj23@gmail.com)
 
+
 class NotImplementedException(Exception):
     pass
 
@@ -52,8 +53,8 @@ class Cache:
 
 
 class Node:
-    def __init__(self, next=None, prev=None, data=None):
-        self.next = next # reference to next node in DLL
+    def __init__(self, _next=None, prev=None, data=None):
+        self._next = _next # reference to _next node in DLL
         self.prev = prev # reference to previous node in DLL
         self.data = data
 
@@ -64,7 +65,7 @@ class DoublyLinkedList:
 
     def push(self, new_data):
         new_node = Node(new_data)
-        new_node.next = self.head
+        new_node._next = self.head
         if self.head is not None:
             self.head.prev = new_node
         self.head = new_node
@@ -74,11 +75,11 @@ class DoublyLinkedList:
             print("the given previous node cannot be NULL")
             return
         new_node = Node(new_data)
-        new_node.next = prev_node.next
-        prev_node.next = new_node
+        new_node._next = prev_node._next
+        prev_node._next = new_node
         new_node.prev = prev_node
-        if new_node.next:
-            new_node.next.prev = new_node
+        if new_node._next:
+            new_node._next.prev = new_node
 
     def append(self, new_data):
         new_node = Node(new_data)
@@ -86,9 +87,9 @@ class DoublyLinkedList:
             self.head = new_node
             return
         last = self.head
-        while last.next:
-            last = last.next
-        last.next = new_node
+        while last._next:
+            last = last._next
+        last._next = new_node
         new_node.prev = last
         return
 
@@ -97,7 +98,7 @@ class DoublyLinkedList:
         while node:
             print(" {}".format(node.data))
             last = node
-            node = node.next
+            node = node._next
         print("\nTraversal in reverse direction")
         while last:
             print(" {}".format(last.data))
