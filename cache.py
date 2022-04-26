@@ -14,7 +14,15 @@ class IEvictionAlgo:
 
 class LRU(IEvictionAlgo):
     def get(self, node, cache):
+        pass
+    def set(self, node, cache):
+        pass
+    def evict(self, cache):
+        return cache.get_last()
 
+class FIFO(IEvictionAlgo):
+    def get(self, node, cache):
+        pass
     def set(self, node, cache):
         pass
     def evict(self, cache):
@@ -22,15 +30,15 @@ class LRU(IEvictionAlgo):
 
 
 EVICTION_ALGO_REGISTRY = {
-    'lru': LRU
+    'lru': LRU,
     'fifo': FIFO
 }
 
 class Cache:
-	def __init__(self, eviction_algo_str, max_capacity):
-		self.map = {} # initialise with max_capacity size
-		self.max_capacity = max_capacity
-		self.eviction_algo = EVICTION_ALGO_REGISTRY[eviction_algo_str]
+    def __init__(self, eviction_algo_str, max_capacity):
+        self.map = {} # initialise with max_capacity size
+        self.max_capacity = max_capacity
+        self.eviction_algo = EVICTION_ALGO_REGISTRY[eviction_algo_str]
         self.dll = DoublyLinkedList()
 
     def set(self, key, value):
@@ -51,7 +59,6 @@ class Node:
 
 
 class DoublyLinkedList:
-
     def __init__(self):
         self.head = None
 
