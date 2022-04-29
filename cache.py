@@ -20,11 +20,5 @@ class Cache:
         return self.eviction_algo.get(node, self)
 
 
-class Node:
-    def __init__(self, _next=None, prev=None, data=None):
-        self._next = _next # reference to _next node in DLL
-        self.prev = prev # reference to previous node in DLL
-        self.data = data
-
 cache = Cache('lru', 100)
 

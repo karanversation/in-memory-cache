@@ -1,6 +1,13 @@
 # Author: Karan Bajaj (karanbajaj23@gmail.com)
 
 
+class Node:
+    def __init__(self, _next=None, prev=None, data=None):
+        self._next = _next # reference to _next node in DLL
+        self.prev = prev # reference to previous node in DLL
+        self.data = data
+
+
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
@@ -36,12 +43,12 @@ class DoublyLinkedList:
         return
 
     def printList(self, node):
-        print("\nTraversal in forward direction")
+        print("Traversal in forward direction")
         while node:
             print(" {}".format(node.data))
             last = node
             node = node._next
-        print("\nTraversal in reverse direction")
+        print("Traversal in reverse direction")
         while last:
             print(" {}".format(last.data))
             last = last.prev
