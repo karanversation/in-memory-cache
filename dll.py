@@ -7,13 +7,16 @@ class Node:
         self.prev = prev # reference to previous node in DLL
         self.data = data
 
+    def __repr__(self):
+        return 'Node(data={})'.format(self.data)
+
 
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
 
     def push(self, new_data):
-        new_node = Node(new_data)
+        new_node = Node(data=new_data)
         new_node._next = self.head
         if self.head is not None:
             self.head.prev = new_node
@@ -23,7 +26,7 @@ class DoublyLinkedList:
         if prev_node is None:
             print("previous node cannot be NULL")
             return
-        new_node = Node(new_data)
+        new_node = Node(data=new_data)
         new_node._next = prev_node._next
         prev_node._next = new_node
         new_node.prev = prev_node
@@ -31,7 +34,7 @@ class DoublyLinkedList:
             new_node._next.prev = new_node
 
     def append(self, new_data):
-        new_node = Node(new_data)
+        new_node = Node(data=new_data)
         if self.head is None:
             self.head = new_node
             return
@@ -42,7 +45,8 @@ class DoublyLinkedList:
         new_node.prev = last
         return
 
-    def printList(self, node):
+    def printList(self, node=None):
+        node = node or self.head
         print("Traversal in forward direction")
         while node:
             print(" {}".format(node.data))
@@ -52,4 +56,7 @@ class DoublyLinkedList:
         while last:
             print(" {}".format(last.data))
             last = last.prev
+
+    def __repr__(self):
+        return 'DoublyLinkedList(head={})'.format(self.head)
 
