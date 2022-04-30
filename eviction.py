@@ -5,9 +5,9 @@ class NotImplementedException(Exception):
     pass
 
 class IEvictionAlgo:
-    def get():
+    def get(self):
         raise NotImplementedException()
-    def set():
+    def set(self):
         raise NotImplementedException()
     def evict(self, cache):
         raise NotImplementedException()
