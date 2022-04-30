@@ -45,7 +45,7 @@ class DoublyLinkedList:
         new_node.prev = last
         return
 
-    def print(self, node=None):
+    def traverse(self, node=None):
         node = node or self.head
         print("Traversal in forward direction")
         while node:
