@@ -11,6 +11,8 @@ class IEvictionAlgo:
         raise NotImplementedException()
     def evict(self, cache):
         raise NotImplementedException()
+    def __repr__(self):
+        return str(self.__class__)
 
 
 class LRU(IEvictionAlgo):

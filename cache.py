@@ -19,6 +19,9 @@ class Cache:
         node = self.map[key]
         return self.eviction_algo.get(node, self)
 
+    def __repr__(self):
+        return 'Cache(eviction_algo={})'.format(self.eviction_algo)
+
 
 cache = Cache('lru', 100)
 
