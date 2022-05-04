@@ -21,3 +21,15 @@ class Cache:
     def get(self, key):
         return self.elements.get(key)
 
+c = Cache(3)
+
+print(c.get(1))
+
+c.set(1, 100)
+print(c.get(1))
+
+c.set(2, 200)
+print(c.get(2))
+
+c.set(3, 300)
+c.set(4, 400)
